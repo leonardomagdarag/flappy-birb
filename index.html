@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flappy Birb</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- MENU SCREEN -->
+        <div id="menu-screen" class="screen">
+            <h1>Flappy Birb</h1>
+            <canvas id="preview-canvas" width="120" height="120"></canvas>
+            <div id="difficulty-select">
+                <span>Difficulty</span>
+                <div id="diff-buttons">
+                    <button class="diff-btn" data-diff="easy">Easy</button>
+                    <button class="diff-btn active" data-diff="normal">Normal</button>
+                    <button class="diff-btn" data-diff="hard">Hard</button>
+                </div>
+            </div>
+            <div id="highscores-box">
+                <h2>High Scores</h2>
+                <ol id="highscore-list"></ol>
+            </div>
+            <button id="btn-play">Play</button>
+            <button id="btn-clear-scores">Clear Scores</button>
+        </div>
+
+        <!-- GAME SCREEN -->
+        <div id="game-screen" class="screen hidden">
+            <canvas id="game-canvas" width="400" height="600"></canvas>
+        </div>
+
+        <!-- GAME OVER SCREEN -->
+        <div id="gameover-screen" class="screen hidden">
+            <h1>Game Over</h1>
+            <p id="go-score"></p>
+            <p id="go-best"></p>
+            <button id="btn-restart">Play Again</button>
+            <button id="btn-menu">Menu</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
