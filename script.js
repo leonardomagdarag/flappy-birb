@@ -137,9 +137,28 @@ function drawGround(c, canvasW, canvasH) {
 }
 
 function drawBird(c, x, y, r) {
-    // Simple rectangle lang ang bird - r ang half-size niya
+    // Keep the same body bounds for collision consistency; visuals only.
+    const bodyX = x - r;
+    const bodyY = y - r;
+    const bodySize = r * 2;
+
+    // body
     c.fillStyle = "#ffd54a";
-    c.fillRect(x - r, y - r, r * 2, r * 2);
+    c.fillRect(bodyX, bodyY, bodySize, bodySize);
+
+    // small wing rectangle (inside body area)
+    c.fillStyle = "#f2b93f";
+    c.fillRect(x - r * 0.75, y - r * 0.25, r * 1.1, r * 0.65);
+
+    // small eye square
+    c.fillStyle = "#111";
+    const eyeSize = Math.max(3, r * 0.28);
+    c.fillRect(x + r * 0.25, y - r * 0.45, eyeSize, eyeSize);
+
+    // small beak square (slightly outside for a bird look)
+    c.fillStyle = "#ff8c42";
+    const beakSize = Math.max(3, r * 0.35);
+    c.fillRect(x + r * 0.95, y - r * 0.05, beakSize, beakSize);
 }
 
 function drawPipes(c) {
@@ -312,7 +331,7 @@ function gameLoop() {
 function flap() {
     // flap upwards
     if (!started) started = true;
-    bird.vy = FLAP_POWER; 
+    bird.vy = FLAP_POWER;
 }
 
 function endGame() {
